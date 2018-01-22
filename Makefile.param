@@ -25,3 +25,6 @@ export CFLAGS := -DLINUX_PLATFORM
 export CPPFLAGS := -DLINUX_PLATFORM
 export LDFLAGSS :=
 export MACRO :=
+
+export HI_SDK_INC :=
+export UTIL_INC :=
