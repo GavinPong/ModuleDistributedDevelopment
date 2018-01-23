@@ -6,9 +6,9 @@
 export CHIP_TYPE := HI_3531A
 #=======================================
 #tools chain
-ifeq($(CHIP_TYPE), HI_3531A)
-TOOL_CHAIN_DIR := \ 
-export CROSS_COMPILE := $(TOOL_CHAIN_DIR)/arm-hisiv300-linux-
+ifeq ($(CHIP_TYPE), HI_3531A)
+TOOL_CHAIN_DIR :=  
+export CROSS_COMPILE := $(TOOL_CHAIN_DIR)arm-hisiv300-linux-
 else
 
 endif
@@ -26,5 +26,10 @@ export CPPFLAGS := -DLINUX_PLATFORM
 export LDFLAGSS :=
 export MACRO :=
 
+############ share lib ################# 
 export HI_SDK_INC :=
 export UTIL_INC :=
+
+
+############ alone lib #################
+export ALONE_LIB := 
