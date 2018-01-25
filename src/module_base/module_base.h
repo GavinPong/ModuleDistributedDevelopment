@@ -1,9 +1,21 @@
 #ifndef __MODULE_BASE_H__
 #define __MODULE_BASE_H__
 
+#define MODULE_OK 1
+#define MODULE_FALSE 0
+typedef enum _module_err_e{
+	MODULE_ERR_INVALIDPARAM = 0xA0000001,			//≤Œ ˝“Ï≥£
+}module_err_e;
+
 struct module_pub_data;
 struct _module_s;
+
+typedef struct list_node{
+	struct list_node *next, *prev;
+}LIST_NODE, *PLIST_NODE;
+
 typedef struct _module_s{
+	struct list_node m_list_node;
 	char *m_name;			//module name
 	char *m_desc;			//module desciption
 	int m_module_id;		//module id
