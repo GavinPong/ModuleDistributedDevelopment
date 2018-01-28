@@ -3,6 +3,13 @@
 
 #define MODULE_OK 1
 #define MODULE_FALSE 0
+
+//######所有某块名的宏定义都放在这里管理#########
+#define  DUMMY "dummy"
+//#######module name end ####################
+
+
+
 typedef enum _module_err_e{
 	MODULE_ERR_INVALIDPARAM = 0xA0000001,			//参数异常
 }module_err_e;
@@ -26,7 +33,7 @@ typedef struct _module_s{
 	//供外部发命令给模块内部，或者使用模块内部某功能
 	int (*command_process)(struct _module_s *pmodule, struct module_pub_data *pmodule_pub_data);
 	//供外部发状态命令给模块内部，或者让模块将该状态通知到他的下级服务
-	int (*sdk_process)(struct _module_s *pmodule, struct module_pub_data *pmodule_pub_data);
+	int (*process_status)(struct _module_s *pmodule, struct module_pub_data *pmodule_pub_data);
 	//设置模块配置参数
 	int (*config_set)(struct _module_s *pmodule, struct module_pub_data *pmodule_pub_data);
 	//获取模块配置参数
