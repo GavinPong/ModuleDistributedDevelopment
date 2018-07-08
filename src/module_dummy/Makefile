@@ -1,8 +1,9 @@
-include ../Makefile.param
+include ../../Makefile.param
 
 #Additional flags
 
 INCLUDE_DIRS += -I./
+INCLUDE_DIRS += -I../
 INCLUDE_DIRS += -I$(UTIL_TOOLS_DIR)/base64
 INCLUDE_DIRS += -I$(UTIL_TOOLS_DIR)/cJSON
 INCLUDE_DIRS += -I$(UTIL_TOOLS_DIR)/cross_platform

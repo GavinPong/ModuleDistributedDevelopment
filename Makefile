@@ -29,6 +29,7 @@ LIBOBJS_CPP += $(DIRS_CPP:%.cpp=%.o)
 
 
 all:
+	cd $(UTIL_TOOLS_DIR) && cd .. && make	#先进入util_tools目录将需要的工具接口编译成 obj（*.o）文件
 	/bin/bash ./make_in_all_dirs.sh && make $(TARGET)
 
 
@@ -41,13 +42,15 @@ libmdd.a:
 	$(AR)  rv $@   $(LIBOBJS_C) $(LIBOBJS_CPP)
 	$(STRIP)   $(STRIPFLAGS)  $@
 
-clean: 
+clean:
+	cd $(UTIL_TOOLS_DIR) && cd .. &&  make clean	#先进入util_tools目录将需要的工具接口编译成 obj（*.o）文件 
 	/bin/bash ./clear_o_file.sh
 
 depend:
 	/bin/bash ./clear_d_file.sh
 
 distclean:
+	cd $(UTIL_TOOLS_DIR) &&  cd .. && make distclean	#先进入util_tools目录将需要的工具接口编译成 obj（*.o）文件
 	/bin/bash ./clear_o_d_file.sh
 	
 

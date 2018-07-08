@@ -7,7 +7,7 @@ export CHIP_TYPE := HI_3531A
 #=======================================
 #tools chain
 ifeq ($(CHIP_TYPE), HI_3531A)
-TOOL_CHAIN_DIR :=  
+TOOL_CHAIN_DIR :=  /home/share_disk/tool_chain/3531A_030/arm-hisiv300-linux/target/bin/
 export CROSS_COMPILE := $(TOOL_CHAIN_DIR)arm-hisiv300-linux-
 else
 
@@ -28,8 +28,7 @@ export MACRO :=
 
 ############ share lib ################# 
 export HI_SDK_DIR :=
-export UTIL_TOOLS_DIR := /home/share_disk/workspace/code/util_tools
-
+export UTIL_TOOLS_DIR := /home/share_disk/workspace/code/util_tools/code
 
 ############ alone lib #################
 export ALONE_LIB := 
