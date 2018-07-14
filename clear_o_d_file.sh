@@ -18,6 +18,7 @@ readfile()
 			find $1 -name "*.d"  | xargs  rm -f    #强制删除所有*.d文件
 		fi
 	done
+	rm *.so *.a -rf
 }
 
 folder="./"

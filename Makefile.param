@@ -21,8 +21,8 @@ export  STRIP := $(CROSS_COMPILE)strip
 export STRIPFLAGS:= -g --strip-unneeded
 export MAKEDEPEND =$(CC) -MM -MT
 
-export CFLAGS := -DLINUX_PLATFORM
-export CPPFLAGS := -DLINUX_PLATFORM
+export CFLAGS := -DLINUX_PLATFORM  -Wall
+export CPPFLAGS := -DLINUX_PLATFORM  -Wall
 export LDFLAGSS :=
 export MACRO :=
 
