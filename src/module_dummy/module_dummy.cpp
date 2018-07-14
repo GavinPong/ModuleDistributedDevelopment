@@ -10,7 +10,7 @@ int module_dummy_alloc()
 	module_dummy = (module_t *)calloc(1, sizeof(module_t));
 	if (!module_dummy)
 	{
-		printf("%s->%d: malloc module_dummy structor was failed\n");
+		printf("%s->%d: malloc module_dummy structor was failed\n", __FILE__, __LINE__);
 		return MODULE_FALSE;
 	}
 	return 0;

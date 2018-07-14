@@ -17,6 +17,8 @@ typedef struct module_pub_data{
 	int16_t m_stream_id;				//流类型
 	int16_t m_reserved;				//保留字段
 	uint32_t m_channel_id;		//通道ID
+	uint32_t m_module_id;		//模块ID
+	char m_name[32];			//模块名称
 	char m_data_ptr[];				//
 }module_pub_data_t;
 
