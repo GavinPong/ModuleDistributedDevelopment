@@ -21,8 +21,8 @@ struct module_pub_data;
 
 typedef struct _module_s{
 	struct list_head m_list;
-	char *m_name;			//module name
-	char *m_desc;			//module desciption
+	const char *m_name;			//module name
+	const char *m_desc;			//module desciption
 	int m_module_id;		//module id
 	void *m_priv_data;		//私有数据指针
 	int *m_data_size;		//私有数据块大小

@@ -52,9 +52,13 @@ depend:
 distclean:
 	cd $(UTIL_TOOLS_DIR) &&  cd .. && make distclean	#先进入util_tools目录将需要的工具接口编译成 obj（*.o）文件
 	/bin/bash ./clear_o_d_file.sh
-	
+
+install:
+	cp 	src/*.h /home/share_disk/workspace/thirdlib/mdd/inc -rf
+	cp 	*.so /home/share_disk/workspace/thirdlib/mdd/ -rf
 
 .PHONY:$(TARGET)
 .PHONY: clean
 .PHONY: depend
 .PHONY: distclean 
+.PHONY: install 
