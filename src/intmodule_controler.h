@@ -19,6 +19,8 @@
 #define __MODULE_CONTROLER_H__
 
 #include "gavin_error.h"
+#include "intmodule_external.h"
+#include "cross_platform.h"
 
 typedef enum _int_mod_ctr_err_code_e{
 	INT_MOD_CTR_ERR_MODULE_ID = 64,		//非法模块ID
@@ -52,10 +54,6 @@ typedef enum _int_mod_ctr_err_code_e{
 #define INTMODULE_CTR_ERR_SET_EMPTY			GAVIN_DEF_ERR(GAVIN_MODE_ID_INT_MOD_CTR, GAVIN_ERR_LEVEL_ERROR, INT_MOD_CTR_ERR_SET_EMPTY)//模块集合为空
 #define INTMODULE_CTR_ERR_MATCH			GAVIN_DEF_ERR(GAVIN_MODE_ID_INT_MOD_CTR, GAVIN_ERR_LEVEL_ERROR, INT_MOD_CTR_ERR_MATCH)//模块匹配失败
 
-
-#include "intmodule_external.h"
-#include "cross_platform.h"
-
 #ifdef __cplusplus
 extern "C"{
 #endif
@@ -65,37 +63,37 @@ extern "C"{
 启动intmodule，根据外部配置完成各个模块的启动
 */
 /************************************************************************/
-int intmodule_ctrl_startup();
+int32_t intmodule_ctrl_startup();
 /************************************************************************/
 /* 
 关闭intmodule，关闭各个模块的启动
 */
 /************************************************************************/
-int intmodule_ctrl_shutdown();
+int32_t intmodule_ctrl_shutdown();
 /************************************************************************/
 /* 
 根据参数调用模块的指定接口，完成指定的操作
 */
 /************************************************************************/
-int intmodule_ctrl_process_cmd(module_pub_data_t *module_pub_data);
+int32_t intmodule_ctrl_process_cmd(module_pub_data_t *module_pub_data);
 /************************************************************************/
 /* 
 根据参数调用模块的指定接口，获取对应模块的配置参数
 */
 /************************************************************************/
-int intmodule_ctrl_get_config(module_pub_data_t *module_pub_data, char *buf, uint32_t buf_size);
+int32_t intmodule_ctrl_get_config(module_pub_data_t *module_pub_data, char *buf, uint32_t buf_size);
 /************************************************************************/
 /* 
 根据参数调用模块的指定接口，设置对应模块的配置参数
 */
 /************************************************************************/
-int intmodule_ctrl_set_config(module_pub_data_t *module_pub_data);
+int32_t intmodule_ctrl_set_config(module_pub_data_t *module_pub_data);
 /************************************************************************/
 /* 
 根据参数调用模块的指定接口，设置对应模块的配置参数
 */
 /************************************************************************/
-int intmodule_ctrl_register_callback(int (*callback)(module_pub_data_t *module_pub_data));
+int32_t intmodule_ctrl_register_callback(int32_t (*callback)(module_pub_data_t *module_pub_data));
 #ifdef __cplusplus
 }
 #endif

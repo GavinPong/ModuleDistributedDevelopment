@@ -5,13 +5,13 @@
 #include <stdlib.h>
 
 typedef struct _dummy_ctx_s{
-	int m_inited;
+	int32_t m_inited;
 }dummy_ctx_t;
 
 static dummy_ctx_t dummy_ctx = {0};
 module_t *module_dummy = NULL;
 
-static int init()
+static int32_t init()
 {
 	if(1 == dummy_ctx.m_inited)
 		return INTMODULE_DUMMY_ERR_INITED;
@@ -20,7 +20,7 @@ static int init()
 	return INTMODULE_DUMMY_OK;
 }
 
-static int uninit()
+static int32_t uninit()
 {
 	if(0 == dummy_ctx.m_inited)
 		return INTMODULE_DUMMY_ERR_SYS_NOTREADY;
@@ -29,31 +29,31 @@ static int uninit()
 	return INTMODULE_DUMMY_OK;
 }
 
-static int process_command(struct module_pub_data *pmodule_pub_data)
+static int32_t process_command(struct module_pub_data *pmodule_pub_data)
 {
 	LOG_PACKAGE_STR(process_command);
 	return INTMODULE_DUMMY_OK;
 }
 
-static int config_set(struct module_pub_data *pmodule_pub_data)
+static int32_t config_set(struct module_pub_data *pmodule_pub_data)
 {
 	LOG_PACKAGE_STR(config_set);
 	return INTMODULE_DUMMY_OK;
 }
 
-static int config_get(struct module_pub_data *pmodule_pub_data, char *buf, int buf_size)
+static int32_t config_get(struct module_pub_data *pmodule_pub_data, char *buf, int32_t buf_size)
 {
 	LOG_PACKAGE_STR(config_get);
 	return INTMODULE_DUMMY_OK;
 }
 
-static int process_status(struct module_pub_data *pmodule_pub_data)
+static int32_t process_status(struct module_pub_data *pmodule_pub_data)
 {
 	LOG_PACKAGE_STR(process_status);
 	return INTMODULE_DUMMY_OK;
 }
 
-int module_dummy_alloc()
+int32_t module_dummy_alloc()
 {
 	LOG_PACKAGE_STR(module_dummy_alloc);
 	module_dummy = (module_t *)calloc(1, sizeof(module_t));
@@ -73,7 +73,7 @@ int module_dummy_alloc()
 	return INTMODULE_DUMMY_OK;
 }
 
-int module_dummy_free()
+int32_t module_dummy_free()
 {
 	LOG_PACKAGE_STR(module_dummy_free);
 	if (module_dummy)

@@ -203,11 +203,12 @@ int32_t intmodule_ctrl_init_ctx(){
 	s_module_ctrl_ctx.m_inited = 1;
 	s_module_ctrl_ctx.m_max_module_cnt = 0;
 	s_module_ctrl_ctx.m_module_arry = NULL;
-
+	module_base_manager_ctx_init();
 	return INTMODULE_CTR_OK;
 }
 
 int32_t intmodule_ctrl_uninit_ctx(){
+	module_base_manager_ctx_uninit();
 	s_module_ctrl_ctx.m_inited = 0;
 
 	return INTMODULE_CTR_OK;

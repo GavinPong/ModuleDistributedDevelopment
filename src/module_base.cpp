@@ -18,32 +18,15 @@ typedef struct _module_magager_ctx{
 }module_magager_ctx_t;
 
 static module_magager_ctx_t s_module_magager_ctx_t;
-static cJSON *root_module_table_json = NULL;
 module_base_callback_t g_module_base_callback = NULL;//模块内部调用上层接口的入口
 
 //每注册一个模块必须在表中填充模块名对应的id，每个模块的id必须唯一，参考dummy
 static char module_table[] = {
-	"\"module_table\":"
+	"{\"module_table\":"
 	"["
 		"{\"dummy\":0}"
-	"]"
+	"]}"
 };
-
-int module_manager_ctx_init(){
-	s_module_magager_ctx_t.m_inited = 1;
-	s_module_magager_ctx_t.m_module_cnt = 0;
-	s_module_magager_ctx_t.m_root_module_table_json = NULL;
-	INIT_LIST_HEAD(&s_module_magager_ctx_t.m_module_list_head);
-	return MODULE_OK;
-}
-
-int module_manager_ctx_uninit(){
-	s_module_magager_ctx_t.m_inited = 0;
-	s_module_magager_ctx_t.m_module_cnt = 0;
-	s_module_magager_ctx_t.m_root_module_table_json = NULL;
-
-	return MODULE_OK;
-}
 
 static int module_in_module_table(const char *module_name){
 	if (!s_module_magager_ctx_t.m_root_module_table_json)
@@ -112,15 +95,15 @@ static int unregister_module(module_t *pmodule){
 }
 
 //每个函数必须定义int module_name_module_all() 和 int module_name_module_free()接口申请和释放模块内部管理字段
-#define DECLARE_MODULE_ALLOC_FUNCTION(module_name) int module_##module_name##_alloc()
-#define DECLARE_MODULE_FREE_FUNCTION(module_name) int module_##module_name##_free()
+#define DECLARE_MODULE_ALLOC_FUNCTION(module_name) int32_t module_##module_name##_alloc()
+#define DECLARE_MODULE_FREE_FUNCTION(module_name) int32_t module_##module_name##_free()
 #define MODULE_NAME_TO_STR(module_name) #module_name 
 #define MODULE_CHECK(module_name) module_in_module_table(#module_name)
 
 #define REGISTER_MODULE(module_name) {\
 	DECLARE_MODULE_ALLOC_FUNCTION(module_name);\
 	extern module_t *module_##module_name;\
-	int module_id = MODULE_FALSE;\
+	int32_t module_id = MODULE_FALSE;\
 	module_id = MODULE_CHECK(module_name);\
 	if (module_id < 0)\
 	{\
@@ -133,10 +116,10 @@ static int unregister_module(module_t *pmodule){
 
 #define UNREGISTER_MODULE(module_name) {\
 	DECLARE_MODULE_FREE_FUNCTION(module_name);\
-	extern module_t module_##module_name;\
-	cJSON *module_json;\
-	module_json = cJSON_GetObjectItem(root_module_table_json,#module_name);\
-	if (!module_json)\
+	extern module_t *module_##module_name;\
+	int32_t module_id = MODULE_FALSE;\
+	module_id = MODULE_CHECK(module_name);\
+	if (module_id < 0)\
 	{\
 		printf("%s->%d:%s does not register in the registry", __FILE__, __LINE__, MODULE_NAME_TO_STR(module_name));\
 		return ;\
@@ -145,8 +128,24 @@ static int unregister_module(module_t *pmodule){
 	module_##module_name##_free();\
 }
 
+int module_base_manager_ctx_init(){
+	s_module_magager_ctx_t.m_inited = 1;
+	s_module_magager_ctx_t.m_module_cnt = 0;
+	s_module_magager_ctx_t.m_root_module_table_json = NULL;
+	INIT_LIST_HEAD(&s_module_magager_ctx_t.m_module_list_head);
+	return MODULE_OK;
+}
+
+int module_base_manager_ctx_uninit(){
+	s_module_magager_ctx_t.m_inited = 0;
+	s_module_magager_ctx_t.m_module_cnt = 0;
+	s_module_magager_ctx_t.m_root_module_table_json = NULL;
+
+	return MODULE_OK;
+}
+
 //每新增一个module,则需在此函数内注册对应模块
-int register_all_module(){
+int32_t module_base_register_all_module(){
 	s_module_magager_ctx_t.m_root_module_table_json = cJSON_Parse(module_table);
 	if (!s_module_magager_ctx_t.m_root_module_table_json)
 	{
@@ -164,13 +163,21 @@ int register_all_module(){
 }
 
 	//每新增一个module,则需在此函数内注册对应模块
-void unregister_all_module(){
+void module_base_unregister_all_module(){
+	s_module_magager_ctx_t.m_root_module_table_json = cJSON_Parse(module_table);
+	if (!s_module_magager_ctx_t.m_root_module_table_json)
+	{
+		printf("%s->%d:register_all_module failed because parse module table was failed.....\n", __FILE__, __LINE__);
+		return ;
+	}
 	/*****start 所有模块反注册******/
 	UNREGISTER_MODULE(dummy);	//注册样例模块
 	/*****end 所有模块反注册******/
+	cJSON_Delete(s_module_magager_ctx_t.m_root_module_table_json);
+	s_module_magager_ctx_t.m_root_module_table_json = NULL;
 }
 
-int find_module_by_name(module_t *pmodule, const char *module_name){
+int32_t module_base_find_module_by_name(module_t *pmodule, const char *module_name){
 	if (!pmodule || !module_name)
 	{
 		return MODULE_ERR_INVALIDPARAM;
