@@ -124,7 +124,7 @@ static int unregister_module(module_t *pmodule){
 		printf("%s->%d:%s does not register in the registry", __FILE__, __LINE__, MODULE_NAME_TO_STR(module_name));\
 		return ;\
 	}\
-	unregister_module(&module_##module_name);\
+	unregister_module(module_##module_name);\
 	module_##module_name##_free();\
 }
 
