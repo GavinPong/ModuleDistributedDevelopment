@@ -46,7 +46,7 @@ int32_t module_base_manager_ctx_init();
 int32_t module_base_manager_ctx_uninit();
 int32_t module_base_register_all_module();
 void module_base_unregister_all_module();
-int32_t module_base_find_module_by_name(module_t *pmodule, const char *module_name);
+int32_t module_base_find_module_by_name(module_t **pmodule, const char *module_name);
 
 #ifdef __cplusplus
 }

@@ -141,7 +141,7 @@ static int32_t int_module_ctrl_module_match(int32_t module_id, const char *modul
 		return INTMODULE_CTR_ERR_SET_EMPTY;
 	}
 	module_t *p_module = s_module_ctrl_ctx.m_module_arry[module_id];
-	if (!strcmp(p_module->m_name, module_name))
+	if (p_module && (!strcmp(p_module->m_name, module_name)))
 	{
 		return INTMODULE_CTR_OK;
 	}
@@ -172,11 +172,11 @@ static int32_t intmodule_ctrl_load_module(cJSON *in_json){
 		{
 			continue;
 		}
-		module_json = cJSON_GetObjectItem(sub_json, "enbale");
+		module_json = cJSON_GetObjectItem(sub_json, "enable");
 		if (1 == module_json->valueint)
 		{
 			module_json = cJSON_GetObjectItem(sub_json, "name");			
-			module_json && module_base_find_module_by_name(pmodule, module_json->valuestring);
+			module_json && module_base_find_module_by_name(&pmodule, module_json->valuestring);
 			if (pmodule)
 			{
 				pmodule->init();
@@ -258,7 +258,22 @@ int intmodule_ctrl_shutdown(){
 }
 
 int32_t intmodule_ctrl_process_cmd(module_pub_data_t *module_pub_data){
+	if (!module_pub_data)
+	{
+		return INTMODULE_CTR_ERR_NULL_PTR;
+	}
+	
+	int32_t ret_value = INTMODULE_CTR_OK;
+	int32_t module_id = module_pub_data->m_module_id;
+	char name[32] = "";
 
+	strncpy(name, module_pub_data->m_name, sizeof(name));
+	if (INTMODULE_CTR_OK != (ret_value = int_module_ctrl_module_match(module_id, name)))
+	{
+		return ret_value;
+	}
+	module_t *p_module = s_module_ctrl_ctx.m_module_arry[module_id];
+	p_module->process_command(module_pub_data);
 	return INTMODULE_CTR_OK;
 }
 

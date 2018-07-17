@@ -177,15 +177,16 @@ void module_base_unregister_all_module(){
 	s_module_magager_ctx_t.m_root_module_table_json = NULL;
 }
 
-int32_t module_base_find_module_by_name(module_t *pmodule, const char *module_name){
+int32_t module_base_find_module_by_name(module_t **pmodule, const char *module_name){
 	if (!pmodule || !module_name)
 	{
 		return MODULE_ERR_INVALIDPARAM;
 	}
-	module_t *n;
-	list_for_each_entry_safe(module_t, pmodule, n, &s_module_magager_ctx_t.m_module_list_head, m_list){
-		if (!strcmp(pmodule->m_name, module_name))
+	module_t *cur, *n;
+	list_for_each_entry_safe(module_t, cur, n, &s_module_magager_ctx_t.m_module_list_head, m_list){
+		if (!strcmp(cur->m_name, module_name))
 		{
+			*pmodule = cur;
 			return MODULE_SUCCESS;
 		}
 	}
