@@ -1,15 +1,15 @@
 #ifndef __MODULE_BASE_H__
 #define __MODULE_BASE_H__
 
+#include "list.h"
+#include "cross_platform.h"
+
 #define MODULE_OK 1
 #define MODULE_FALSE 0
 
 #ifdef __cplusplus
 extern "C"{
 #endif
-
-#include "list.h"
-#include "cross_platform.h"
 
 #define MODULE_SUCCESS 1
 #define MODULE_FAILURE 0

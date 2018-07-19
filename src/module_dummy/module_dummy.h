@@ -6,7 +6,7 @@ Dummy is a sample file of how to use module
 #define __MODULE_DUMMY_H__
 
 #include "gavin_error.h"
-#include "module_base.h"
+#include "../module_base.h"
 
 typedef enum _int_mod_dummy_err_code_e{
 	INT_MOD_DUMMY_ERR_MODULE_ID = 64,		//·Ç·¨Ä£¿éID

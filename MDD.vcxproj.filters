@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="util_tools">
+      <UniqueIdentifier>{3f61a9a2-2e79-4a65-b2bf-13779420fdfa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="util_tools\base64">
+      <UniqueIdentifier>{4937199b-c740-417e-b092-7c81246d676e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="util_tools\cJSON">
+      <UniqueIdentifier>{2cceeba6-6586-40b6-8ebe-c3d273c94740}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="util_tools\cross_platform">
+      <UniqueIdentifier>{2f368b39-40f7-428f-92ae-20b25f33e3ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="util_tools\error">
+      <UniqueIdentifier>{7419b331-46e5-4a2f-86f7-b371bcee54d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="util_tools\filefunc">
+      <UniqueIdentifier>{9dd45a78-7e26-4602-9d4b-ee099067fb46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="util_tools\inirw">
+      <UniqueIdentifier>{a8d82436-c1a5-41f1-a60b-df2256f9365a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="util_tools\list">
+      <UniqueIdentifier>{511897d3-5334-420f-8334-0ace21fb5671}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="util_tools\log">
+      <UniqueIdentifier>{8dd159fe-10e2-4ecd-b287-a6e477ec47e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="util_tools\strfunc">
+      <UniqueIdentifier>{26e33461-cb39-4057-ae7a-8f641740126e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\global_def.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\intmodule_controler.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\intmodule_external.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\module_base.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\util_tools\code\base64\base64.h">
+      <Filter>util_tools\base64</Filter>
+    </ClInclude>
+    <ClInclude Include="..\util_tools\code\cJSON\cJSON.h">
+      <Filter>util_tools\cJSON</Filter>
+    </ClInclude>
+    <ClInclude Include="..\util_tools\code\cross_platform\cross_platform.h">
+      <Filter>util_tools\cross_platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\util_tools\code\error\gavin_error.h">
+      <Filter>util_tools\error</Filter>
+    </ClInclude>
+    <ClInclude Include="..\util_tools\code\filefunc\filefunc.h">
+      <Filter>util_tools\filefunc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\util_tools\code\inirw\inirw.h">
+      <Filter>util_tools\inirw</Filter>
+    </ClInclude>
+    <ClInclude Include="..\util_tools\code\list\list.h">
+      <Filter>util_tools\list</Filter>
+    </ClInclude>
+    <ClInclude Include="..\util_tools\code\log\log.h">
+      <Filter>util_tools\log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\util_tools\code\strfunc\strfunc.h">
+      <Filter>util_tools\strfunc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\module_dummy\module_dummy.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\module_dummy\module_dummy_external.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\intmodule_controler.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\module_base.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\util_tools\code\base64\base64.cpp">
+      <Filter>util_tools\base64</Filter>
+    </ClCompile>
+    <ClCompile Include="..\util_tools\code\cJSON\cJSON.c">
+      <Filter>util_tools\cJSON</Filter>
+    </ClCompile>
+    <ClCompile Include="..\util_tools\code\error\gavin_error.c">
+      <Filter>util_tools\error</Filter>
+    </ClCompile>
+    <ClCompile Include="..\util_tools\code\filefunc\filefunc.c">
+      <Filter>util_tools\filefunc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\util_tools\code\inirw\inirw.c">
+      <Filter>util_tools\inirw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\util_tools\code\log\log.cpp">
+      <Filter>util_tools\log</Filter>
+    </ClCompile>
+    <ClCompile Include="..\util_tools\code\strfunc\strfunc.c">
+      <Filter>util_tools\strfunc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\module_dummy\module_dummy.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

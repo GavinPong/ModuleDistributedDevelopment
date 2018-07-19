@@ -58,42 +58,54 @@ typedef enum _int_mod_ctr_err_code_e{
 extern "C"{
 #endif
 
+#if (PLATFORM == WINDOWS_PLATFORM)
+#ifdef MDD_EXPORTS
+#define MDDSDK_API __declspec(dllexport)
+#else
+#define MDDSDK_API __declspec(dllimport)
+#endif
+#endif
+
+#if (PLATFORM == LINUX_PLATFORM)
+#define MDDSDK_API 
+#endif
+
 /************************************************************************/
 /* 
 启动intmodule，根据外部配置完成各个模块的启动
 */
 /************************************************************************/
-int32_t intmodule_ctrl_startup();
+MDDSDK_API int32_t intmodule_ctrl_startup();
 /************************************************************************/
 /* 
 关闭intmodule，关闭各个模块的启动
 */
 /************************************************************************/
-int32_t intmodule_ctrl_shutdown();
+MDDSDK_API int32_t intmodule_ctrl_shutdown();
 /************************************************************************/
 /* 
 根据参数调用模块的指定接口，完成指定的操作
 */
 /************************************************************************/
-int32_t intmodule_ctrl_process_cmd(module_pub_data_t *module_pub_data);
+MDDSDK_API int32_t intmodule_ctrl_process_cmd(module_pub_data_t *module_pub_data);
 /************************************************************************/
 /* 
 根据参数调用模块的指定接口，获取对应模块的配置参数
 */
 /************************************************************************/
-int32_t intmodule_ctrl_get_config(module_pub_data_t *module_pub_data, char *buf, uint32_t buf_size);
+MDDSDK_API int32_t intmodule_ctrl_get_config(module_pub_data_t *module_pub_data, char *buf, uint32_t buf_size);
 /************************************************************************/
 /* 
 根据参数调用模块的指定接口，设置对应模块的配置参数
 */
 /************************************************************************/
-int32_t intmodule_ctrl_set_config(module_pub_data_t *module_pub_data);
+MDDSDK_API int32_t intmodule_ctrl_set_config(module_pub_data_t *module_pub_data);
 /************************************************************************/
 /* 
 根据参数调用模块的指定接口，设置对应模块的配置参数
 */
 /************************************************************************/
-int32_t intmodule_ctrl_register_callback(int32_t (*callback)(module_pub_data_t *module_pub_data));
+MDDSDK_API int32_t intmodule_ctrl_register_callback(int32_t (*callback)(module_pub_data_t *module_pub_data));
 #ifdef __cplusplus
 }
 #endif

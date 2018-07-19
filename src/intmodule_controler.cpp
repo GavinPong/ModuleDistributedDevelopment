@@ -11,9 +11,11 @@ module_controler作用：
 #include "filefunc.h"
 #include "cJSON.h"
 #include "global_def.h"
+#include "gavin_error.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "log.h"
 
 //功能模块启动项配置文件
 #define  INTMODULE_JSON "/mnt/mtd/int_mod.json"
@@ -216,6 +218,14 @@ int32_t intmodule_ctrl_uninit_ctx(){
 
 int32_t intmodule_ctrl_startup(){
 	cJSON *root_json;
+	log_param_t log_param;
+
+	log_param.m_dst_ip = inet_addr("192.168.31.188");
+	log_param.m_dst_port = 8989;
+	plat_sprintf(log_param.m_pathname, sizeof(log_param.m_pathname), "./log.data");
+	log_param.m_pathname[strlen("./log.data")] = '\0';
+
+	log_startup(&log_param);
 	gavin_err_register_output_func(GAVIN_MODE_ID_INT_MOD_CTR, "intmodule_ctr", get_err_info_callback);
 	intmodule_ctrl_init_ctx();
 	//申请存储所有模块公共数据块地址的地址表
@@ -223,18 +233,21 @@ int32_t intmodule_ctrl_startup(){
 	{
 		printf("%s-%d:intmodule_ctrl_startup was failed because:register_all_module was failed\n", __FILE__, __LINE__);
 		intmodule_ctrl_uninit_ctx();
+		log_shutdown();
 		return INTMODULE_CTR_FALSE;
 	}
 	s_module_ctrl_ctx.m_module_arry = (module_t **)calloc(s_module_ctrl_ctx.m_max_module_cnt, sizeof(module_t *));
 	if (!s_module_ctrl_ctx.m_module_arry)
 	{
 		intmodule_ctrl_shutdown();
+		log_shutdown();
 		return INTMODULE_CTR_ERR_NOT_NOMEM;
 	}
 	
 	if(FILE_FUNC_OK != FILE_FUNC_Get_Json_Form_File(INTMODULE_JSON, &root_json))
 	{
 		intmodule_ctrl_shutdown();
+		log_shutdown();
 		return INTMODULE_CTR_ERR_PARSE_JSON;
 	}
 	intmodule_ctrl_load_module(root_json);
@@ -250,10 +263,11 @@ int intmodule_ctrl_shutdown(){
 		if (s_module_ctrl_ctx.m_module_arry[i])
 		{
 			s_module_ctrl_ctx.m_module_arry[i]->uninit();
-		}	
+		}
 	}
 	module_base_unregister_all_module();
 	intmodule_ctrl_uninit_ctx();
+	log_shutdown();
 	return INTMODULE_CTR_OK;
 }
 
