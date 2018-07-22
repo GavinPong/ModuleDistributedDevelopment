@@ -24,7 +24,8 @@ module_base_callback_t g_module_base_callback = NULL;//Ä£¿éÄÚ²¿µ÷ÓÃÉÏ²ã½Ó¿ÚµÄÈë¿
 static char module_table[] = {
 	"{\"module_table\":"
 	"["
-		"{\"dummy\":0}"
+		"{\"dummy\":0},"
+		"{\"rec_muxer\":1}"
 	"]}"
 };
 
@@ -154,6 +155,7 @@ int32_t module_base_register_all_module(){
 	}
 	/*****start ËùÓĞÄ£¿é×¢²á******/
 	REGISTER_MODULE(dummy);	//×¢²áÑùÀıÄ£¿é
+	REGISTER_MODULE(rec_muxer);	//×¢²áÑùÀıÄ£¿é
 	/*****end ËùÓĞÄ£¿é×¢²á******/
 	s_module_magager_ctx_t.m_module_cnt = cJSON_GetObjectItem(s_module_magager_ctx_t.m_root_module_table_json, "module_table")?cJSON_GetArraySize(cJSON_GetObjectItem(s_module_magager_ctx_t.m_root_module_table_json, "module_table")):0;
 	cJSON_Delete(s_module_magager_ctx_t.m_root_module_table_json);

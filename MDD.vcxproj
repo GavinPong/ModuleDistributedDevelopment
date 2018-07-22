@@ -26,6 +26,7 @@
     <ClInclude Include="src\module_base.h" />
     <ClInclude Include="src\module_dummy\module_dummy.h" />
     <ClInclude Include="src\module_dummy\module_dummy_external.h" />
+    <ClInclude Include="src\module_rec_muxer\module_rec_muxer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\util_tools\code\base64\base64.cpp" />
@@ -38,6 +39,7 @@
     <ClCompile Include="src\intmodule_controler.cpp" />
     <ClCompile Include="src\module_base.cpp" />
     <ClCompile Include="src\module_dummy\module_dummy.cpp" />
+    <ClCompile Include="src\module_rec_muxer\module_rec_muxer.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{A706D7D1-2B5E-4F22-AE19-0145EB14B2F9}</ProjectGuid>

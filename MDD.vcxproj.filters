@@ -90,6 +90,9 @@
     <ClInclude Include="src\module_dummy\module_dummy_external.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="src\module_rec_muxer\module_rec_muxer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\intmodule_controler.cpp">
@@ -120,6 +123,9 @@
       <Filter>util_tools\strfunc</Filter>
     </ClCompile>
     <ClCompile Include="src\module_dummy\module_dummy.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\module_rec_muxer\module_rec_muxer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

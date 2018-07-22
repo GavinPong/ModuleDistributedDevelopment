@@ -6,20 +6,20 @@ TARGET := libmdd.so libmdd.a
 DIR_SRC := src
 DIR_MODULEBASE := $(DIR_SRC)/module_base
 DIR_MODULEDUMMY := $(DIR_SRC)/module_dummy
-DIR_MODULEID := $(DIR_SRC)/module_id
+DIR_REC_MUXER := $(DIR_SRC)/module_rec_muxer
 ###################################
 
 DIRS_C := 
 DIRS_C += $(wildcard $(DIR_SRC)/*.c)
 DIRS_C += $(wildcard $(DIR_MODULEBASE)/*.c)
 DIRS_C += $(wildcard $(DIR_MODULEDUMMY)/*.c)
-DIRS_C += $(wildcard $(DIR_MODULEID)/*.c)
+DIRS_C += $(wildcard $(DIR_REC_MUXER)/*.c)
 
 DIRS_CPP := 
 DIRS_CPP += $(wildcard $(DIR_SRC)/*.cpp)
 DIRS_CPP += $(wildcard $(DIR_MODULEBASE)/*.cpp)
 DIRS_CPP += $(wildcard $(DIR_MODULEDUMMY)/*.cpp)
-DIRS_CPP += $(wildcard $(DIR_MODULEID)/*.cpp)
+DIRS_CPP += $(wildcard $(DIR_REC_MUXER)/*.cpp)
 
 LIBOBJS_C := 
 LIBOBJS_C += $(DIRS_C:%.c=%.o)

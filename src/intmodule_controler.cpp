@@ -149,7 +149,14 @@ static int32_t int_module_ctrl_module_match(int32_t module_id, const char *modul
 	}
 	return INTMODULE_CTR_ERR_MATCH;
 }
-
+/*
+{
+	"module_enable":[
+		{"name":"dummy", "enable":1},
+		{"name":"rec_muxer", "enable":1},
+	]
+}
+*/
 static int32_t intmodule_ctrl_load_module(cJSON *in_json){
 	if(!in_json)
 		return INTMODULE_CTR_ERR_ILLEGAL_PARAM;
