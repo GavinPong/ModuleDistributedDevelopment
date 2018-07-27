@@ -1,0 +1,18 @@
+####################################
+#   所有与第三方库相关的参数全放在这里
+####################################
+
+
+##########include dir#############
+LIBS_INC :=
+LIBS_INC += -I/home/disk2/sdk/Hi3531A_SDK_V1.0.3.0/mpp/include
+LIBS_INC += -I/home/disk2/sdk/Hi3531A_SDK_V1.0.3.0/mpp/include/mkp
+
+
+##########lib dir#############
+LIBS_LIB :=
+LIBS_LIB+= -L/home/disk2/sdk/Hi3531A_SDK_V1.0.3.0/mpp/lib
+
+##########load option#############
+LDFLAGS :=
+LDFLAGS += -lpthread -lm -lstdc++
