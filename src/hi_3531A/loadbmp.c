@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <string.h>
 #include "loadbmp.h"
+#include "log.h"
 
 OSD_COMP_INFO s_OSDCompInfo[OSD_COLOR_FMT_BUTT] = {{0, 4, 4, 4},   /*RGB444*/
                                                     {4, 4, 4, 4},   /*ARGB4444*/
@@ -43,20 +44,20 @@ HI_S32 GetBmpInfo(const char *filename,     OSD_BITMAPFILEHEADER  *pBmpFileHeade
 
     if(NULL == filename)
     {
-        printf("OSD_LoadBMP: filename=NULL\n");
+		log_output(LOG_LEVEL_FILE_SCREEN,"%s->%d:filename=NULL",__FUNCTION__, __LINE__);
         return -1;
     }
 
     if( (pFile = fopen((char *)filename, "rb")) == NULL)
     {
-        printf("Open file faild:%s!\n", filename);
+		log_output(LOG_LEVEL_FILE_SCREEN,"%s->%d:Open file faild:%s",__FUNCTION__, __LINE__,filename);
         return -1;
     }
 
     (void)fread(&bfType, 1, sizeof(bfType), pFile);
     if(bfType != 0x4d42)
     {
-        printf("not bitmap file\n");
+		log_output(LOG_LEVEL_FILE_SCREEN,"%s->%d:not bitmap file",__FUNCTION__, __LINE__);
         fclose(pFile);
         return -1;
     }
@@ -86,7 +87,7 @@ int LoadBMP(const char *filename, OSD_LOGO_T *pVideoLogo)
     
     if(NULL == filename)
     {
-        printf("OSD_LoadBMP: filename=NULL\n");
+		log_output(LOG_LEVEL_FILE_SCREEN,"%s->%d:filename=NULL",__FUNCTION__, __LINE__);
         return -1;
     }
     
@@ -99,25 +100,25 @@ int LoadBMP(const char *filename, OSD_LOGO_T *pVideoLogo)
     if(Bpp < 2)
     {
         /* only support 1555.8888  888 bitmap */
-        printf("bitmap format not supported!\n");
+		log_output(LOG_LEVEL_FILE_SCREEN,"%s->%d:bitmap format not supported",__FUNCTION__, __LINE__);
         return -1;
     }
     
     if(bmpInfo.bmiHeader.biCompression != 0)
     {
-        printf("not support compressed bitmap file!\n");
+		log_output(LOG_LEVEL_FILE_SCREEN,"%s->%d:not support compressed bitmap file",__FUNCTION__, __LINE__);
         return -1;
     }
 
     if(bmpInfo.bmiHeader.biHeight < 0)
     {
-        printf("bmpInfo.bmiHeader.biHeight < 0\n");
+		log_output(LOG_LEVEL_FILE_SCREEN,"%s->%d:bmpInfo.bmiHeader.biHeight < 0",__FUNCTION__, __LINE__);
         return -1;
     }
 
     if( (pFile = fopen((char *)filename, "rb")) == NULL)
     {
-        printf("Open file faild:%s!\n", filename);
+		log_output(LOG_LEVEL_FILE_SCREEN,"%s->%d:Open file faild:%s",__FUNCTION__, __LINE__, filename);
         return -1;
     }
 
@@ -137,7 +138,7 @@ int LoadBMP(const char *filename, OSD_LOGO_T *pVideoLogo)
     pOrigBMPBuf = (HI_U8 *)malloc(h*stride);
     if(NULL == pOrigBMPBuf)
     {
-        printf("not enough memory to malloc!\n");
+		log_output(LOG_LEVEL_FILE_SCREEN,"%s->%d:not enough memory to malloc",__FUNCTION__, __LINE__);
         fclose(pFile);
         return -1;
     }
@@ -147,7 +148,7 @@ int LoadBMP(const char *filename, OSD_LOGO_T *pVideoLogo)
     fseek(pFile, bmpFileHeader.bfOffBits, 0);
     if(fread(pOrigBMPBuf, 1, h*stride, pFile) != (h*stride) )
     {
-        printf("fread error!line:%d\n",__LINE__);
+		log_output(LOG_LEVEL_FILE_SCREEN,"%s->%d:fread error!",__FUNCTION__, __LINE__);
 		perror("fread:");
     }
 
@@ -207,7 +208,7 @@ int LoadBMPEx(const char *filename, OSD_LOGO_T *pVideoLogo, OSD_COLOR_FMT_E enFm
 
     if(NULL == filename)
     {
-        printf("OSD_LoadBMP: filename=NULL\n");
+		log_output(LOG_LEVEL_FILE_SCREEN,"%s->%d:filename=NULL",__FUNCTION__, __LINE__);
         return -1;
     }
     
@@ -220,25 +221,25 @@ int LoadBMPEx(const char *filename, OSD_LOGO_T *pVideoLogo, OSD_COLOR_FMT_E enFm
     if(Bpp < 2)
     {
         /* only support 1555.8888  888 bitmap */
-        printf("bitmap format not supported!\n");
+		log_output(LOG_LEVEL_FILE_SCREEN,"%s->%d:bitmap format not supported!",__FUNCTION__, __LINE__);
         return -1;
     }
     
     if(bmpInfo.bmiHeader.biCompression != 0)
     {
-        printf("not support compressed bitmap file!\n");
+		log_output(LOG_LEVEL_FILE_SCREEN,"%s->%d:not support compressed bitmap file",__FUNCTION__, __LINE__);
         return -1;
     }
 
     if(bmpInfo.bmiHeader.biHeight < 0)
     {
-        printf("bmpInfo.bmiHeader.biHeight < 0\n");
+		log_output(LOG_LEVEL_FILE_SCREEN,"%s->%d:bmpInfo.bmiHeader.biHeight < 0",__FUNCTION__, __LINE__);
         return -1;
     }
 
     if( (pFile = fopen((char *)filename, "rb")) == NULL)
     {
-        printf("Open file faild:%s!\n", filename);
+		log_output(LOG_LEVEL_FILE_SCREEN,"%s->%d:Open file faild:%s!",__FUNCTION__, __LINE__, filename);
         return -1;
     }
     
@@ -259,7 +260,7 @@ int LoadBMPEx(const char *filename, OSD_LOGO_T *pVideoLogo, OSD_COLOR_FMT_E enFm
     pOrigBMPBuf = (HI_U8 *)malloc(h*stride);
     if(NULL == pOrigBMPBuf)
     {
-        printf("not enough memory to malloc!\n");
+		log_output(LOG_LEVEL_FILE_SCREEN,"%s->%d:not enough memory to malloc!",__FUNCTION__, __LINE__);
         fclose(pFile);
         return -1;
     }
@@ -269,7 +270,7 @@ int LoadBMPEx(const char *filename, OSD_LOGO_T *pVideoLogo, OSD_COLOR_FMT_E enFm
     fseek(pFile, bmpFileHeader.bfOffBits, 0);
     if(fread(pOrigBMPBuf, 1, h*stride, pFile) != (h*stride) )
     {
-        printf("fread (%d*%d)error!line:%d\n",h,stride,__LINE__);
+		log_output(LOG_LEVEL_FILE_SCREEN,"%s->%d:fread (%d*%d)error!",__FUNCTION__, __LINE__,h,stride);
 		perror("fread:");
     }
 
@@ -311,7 +312,7 @@ int LoadBMPEx(const char *filename, OSD_LOGO_T *pVideoLogo, OSD_COLOR_FMT_E enFm
                         break;
                         
                     default:
-                        printf("file(%s), line(%d), no such format!\n", __FILE__, __LINE__);
+						log_output(LOG_LEVEL_FILE_SCREEN,"%s->%d:no such format!",__FUNCTION__, __LINE__);
                         break;
                 }
             }
@@ -352,7 +353,7 @@ int LoadBMPCanvas(const char *filename, OSD_LOGO_T *pVideoLogo, OSD_COLOR_FMT_E 
 
     if(NULL == filename)
     {
-        printf("OSD_LoadBMP: filename=NULL\n");
+		log_output(LOG_LEVEL_FILE_SCREEN,"%s->%d:filename=NULL",__FUNCTION__, __LINE__);
         return -1;
     }
     
@@ -365,25 +366,25 @@ int LoadBMPCanvas(const char *filename, OSD_LOGO_T *pVideoLogo, OSD_COLOR_FMT_E 
     if(Bpp < 2)
     {
         /* only support 1555.8888  888 bitmap */
-        printf("bitmap format not supported!\n");
+		log_output(LOG_LEVEL_FILE_SCREEN,"%s->%d:bitmap format not supported!",__FUNCTION__, __LINE__);
         return -1;
     }
     
     if(bmpInfo.bmiHeader.biCompression != 0)
     {
-        printf("not support compressed bitmap file!\n");
+		log_output(LOG_LEVEL_FILE_SCREEN,"%s->%d:not support compressed bitmap file!",__FUNCTION__, __LINE__);
         return -1;
     }
 
     if(bmpInfo.bmiHeader.biHeight < 0)
     {
-        printf("bmpInfo.bmiHeader.biHeight < 0\n");
+		log_output(LOG_LEVEL_FILE_SCREEN,"%s->%d:bmpInfo.bmiHeader.biHeight < 0",__FUNCTION__, __LINE__);
         return -1;
     }
 
     if( (pFile = fopen((char *)filename, "rb")) == NULL)
     {
-        printf("Open file faild:%s!\n", filename);
+		log_output(LOG_LEVEL_FILE_SCREEN,"%s->%d:Open file faild:%s!",__FUNCTION__, __LINE__, filename);
         return -1;
     }
     
@@ -403,7 +404,7 @@ int LoadBMPCanvas(const char *filename, OSD_LOGO_T *pVideoLogo, OSD_COLOR_FMT_E 
     pOrigBMPBuf = (HI_U8 *)malloc(h*stride);
     if(NULL == pOrigBMPBuf)
     {
-        printf("not enough memory to malloc!\n");
+		log_output(LOG_LEVEL_FILE_SCREEN,"%s->%d:not enough memory to malloc!",__FUNCTION__, __LINE__);
         fclose(pFile);
         return -1;
     }
@@ -412,26 +413,26 @@ int LoadBMPCanvas(const char *filename, OSD_LOGO_T *pVideoLogo, OSD_COLOR_FMT_E 
     
     if(stride > pVideoLogo->stride)
     {
-        printf("Bitmap's stride(%d) is bigger than canvas's stide(%d). Load bitmap error!\n", stride, pVideoLogo->stride);
+		log_output(LOG_LEVEL_FILE_SCREEN,"%s->%d:Bitmap's stride(%d) is bigger than canvas's stide(%d). Load bitmap error!",__FUNCTION__, __LINE__, stride, pVideoLogo->stride);
         return -1;
     }
 
     if(h > pVideoLogo->height)
     {
-        printf("Bitmap's height(%d) is bigger than canvas's height(%d). Load bitmap error!\n", h, pVideoLogo->height);
+		log_output(LOG_LEVEL_FILE_SCREEN,"%s->%d:Bitmap's height(%d) is bigger than canvas's height(%d). Load bitmap error!",__FUNCTION__, __LINE__, h, pVideoLogo->height);
         return -1;
     }
 
     if(w > pVideoLogo->width)
     {
-        printf("Bitmap's width(%d) is bigger than canvas's width(%d). Load bitmap error!\n", w, pVideoLogo->width);
+		log_output(LOG_LEVEL_FILE_SCREEN,"%s->%d:Bitmap's width(%d) is bigger than canvas's width(%d). Load bitmap error!",__FUNCTION__, __LINE__, w, pVideoLogo->width);
         return -1;
     }
     
     fseek(pFile, bmpFileHeader.bfOffBits, 0);
     if(fread(pOrigBMPBuf, 1, h*stride, pFile) != (h*stride) )
     {
-        printf("fread (%d*%d)error!line:%d\n",h,stride,__LINE__);
+		log_output(LOG_LEVEL_FILE_SCREEN,"%s->%d:fread (%d*%d)error!",__FUNCTION__, __LINE__,h,stride);
 		perror("fread:");
     }
 
@@ -467,7 +468,7 @@ int LoadBMPCanvas(const char *filename, OSD_LOGO_T *pVideoLogo, OSD_COLOR_FMT_E 
                         break;
                         
                     default:
-                        printf("file(%s), line(%d), no such format!\n", __FILE__, __LINE__);
+						log_output(LOG_LEVEL_FILE_SCREEN,"%s->%d:no such format!",__FUNCTION__, __LINE__);
                         break;
                 }
             }
@@ -494,7 +495,7 @@ char * GetExtName(char * filename)
 
     if(NULL == filename)
     {
-        printf("filename can't be null!");
+		log_output(LOG_LEVEL_FILE_SCREEN,"%s->%d:filename can't be null!",__FUNCTION__, __LINE__);
         return NULL;
     }
 
@@ -520,13 +521,13 @@ int LoadImage(const char *filename, OSD_LOGO_T *pVideoLogo)
     {
         if(0 != LoadBMP(filename, pVideoLogo))
         {
-            printf("OSD_LoadBMP error!\n");
+			log_output(LOG_LEVEL_FILE_SCREEN,"%s->%d:error",__FUNCTION__, __LINE__);
             return -1;
         }
     }
     else
     {
-        printf("not supported image file!\n");
+		log_output(LOG_LEVEL_FILE_SCREEN,"%s->%d:not supported image file!",__FUNCTION__, __LINE__);
         return -1;
     }
 
@@ -541,13 +542,13 @@ int LoadImageEx(const char *filename, OSD_LOGO_T *pVideoLogo, OSD_COLOR_FMT_E en
     {
         if(0 != LoadBMPEx(filename, pVideoLogo, enFmt))
         {
-            printf("OSD_LoadBMP error!\n");
+			log_output(LOG_LEVEL_FILE_SCREEN,"%s->%d:error",__FUNCTION__, __LINE__);
             return -1;
         }
     }
     else
     {
-        printf("not supported image file!\n");
+		log_output(LOG_LEVEL_FILE_SCREEN,"%s->%d:not supported image file!",__FUNCTION__, __LINE__);
         return -1;
     }
 
@@ -563,13 +564,13 @@ int LoadCanvasEx(const char *filename, OSD_LOGO_T *pVideoLogo, OSD_COLOR_FMT_E e
     {
         if(0 != LoadBMPCanvas(filename, pVideoLogo, enFmt))
         {
-            printf("OSD_LoadBMP error!\n");
+			log_output(LOG_LEVEL_FILE_SCREEN,"%s->%d:error",__FUNCTION__, __LINE__);
             return -1;
         }
     }
     else
     {
-        printf("not supported image file!\n");
+		log_output(LOG_LEVEL_FILE_SCREEN,"%s->%d:not supported image file!",__FUNCTION__, __LINE__);
         return -1;
     }
 
@@ -592,7 +593,7 @@ HI_S32 CreateSurfaceByBitMap(const HI_CHAR *pszFileName, OSD_SURFACE_S *pstSurfa
     stLogo.pRGBBuffer = pu8Virt;
     if(LoadImageEx(pszFileName, &stLogo, pstSurface->enColorFmt) < 0)
     {
-        printf("load bmp error!\n");
+		log_output(LOG_LEVEL_FILE_SCREEN,"%s->%d:load bmp error",__FUNCTION__, __LINE__);
         return -1;
     }
 
