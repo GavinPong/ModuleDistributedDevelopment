@@ -5,56 +5,56 @@
 
 typedef struct rec_muxer_ctx_s{
 	int32_t m_inited;
-}rec_muxer_ctx_s;
+}rec_muxer_ctx_t;
 
 
-static rec_muxer_ctx_s rec_muxer_ctx = {0};
+static rec_muxer_ctx_t rec_muxer_ctx = {0};
 module_t *module_rec_muxer = NULL;
 
 
 static int32_t init()
 {
-	LOG_PACKAGE_STR(init);
+	log_output(LOG_LEVEL_FILE_SCREEN, "%s->%d:into %s", __FUNCTION__, __LINE__, __FUNCTION__);
 	return INTMODULE_REC_MUXER_OK;
 }
 
 static int32_t uninit()
 {
-	LOG_PACKAGE_STR(uninit);
+	log_output(LOG_LEVEL_FILE_SCREEN, "%s->%d:into %s", __FUNCTION__, __LINE__, __FUNCTION__);
 	return INTMODULE_REC_MUXER_OK;
 }
 
 //供外部发命令给模块内部，或者使用模块内部某功能
 static  int32_t process_command(struct module_pub_data *pmodule_pub_data)
 {
-	LOG_PACKAGE_STR(process_command);
+	log_output(LOG_LEVEL_FILE_SCREEN, "%s->%d:into %s", __FUNCTION__, __LINE__, __FUNCTION__);
 	return INTMODULE_REC_MUXER_OK;
 }
 
 //供外部发状态命令给模块内部，或者让模块将该状态通知到他的下级服务
 static int32_t process_status(struct module_pub_data *pmodule_pub_data)
 {
-	LOG_PACKAGE_STR(process_status);
+	log_output(LOG_LEVEL_FILE_SCREEN, "%s->%d:into %s", __FUNCTION__, __LINE__, __FUNCTION__);
 	return INTMODULE_REC_MUXER_OK;
 }
 
 //设置模块配置参数
 static int32_t config_set(struct module_pub_data *pmodule_pub_data)
 {
-	LOG_PACKAGE_STR(config_set);
+	log_output(LOG_LEVEL_FILE_SCREEN, "%s->%d:into %s", __FUNCTION__, __LINE__, __FUNCTION__);
 	return INTMODULE_REC_MUXER_OK;
 }
 
 //获取模块配置参数
 static int32_t config_get(struct module_pub_data *pmodule_pub_data, char *buf, int32_t buf_size)
 {
-	LOG_PACKAGE_STR(config_get);
+	log_output(LOG_LEVEL_FILE_SCREEN, "%s->%d:into %s", __FUNCTION__, __LINE__, __FUNCTION__);
 	return INTMODULE_REC_MUXER_OK;
 }
 
 int32_t module_rec_muxer_alloc()
 {
-	LOG_PACKAGE_STR(module_rec_muxer_alloc);
+	log_output(LOG_LEVEL_FILE_SCREEN, "%s->%d:into %s", __FUNCTION__, __LINE__, __FUNCTION__);
 	if (module_rec_muxer)
 	{
 		return INTMODULE_REC_MUXER_ERR_EXIST;
@@ -78,7 +78,7 @@ int32_t module_rec_muxer_alloc()
 
 int32_t  module_rec_muxer_free()
 {
-	LOG_PACKAGE_STR(module_rec_muxer_alloc);
+	log_output(LOG_LEVEL_FILE_SCREEN, "%s->%d:into %s", __FUNCTION__, __LINE__, __FUNCTION__);
 	if (module_rec_muxer)
 	{
 		free(module_rec_muxer);

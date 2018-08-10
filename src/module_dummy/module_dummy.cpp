@@ -13,53 +13,53 @@ module_t *module_dummy = NULL;
 
 static int32_t init()
 {
+	log_output(LOG_LEVEL_FILE_SCREEN, "%s->%d:into %s", __FUNCTION__, __LINE__, __FUNCTION__);
 	if(1 == dummy_ctx.m_inited)
 		return INTMODULE_DUMMY_ERR_INITED;
 
-	LOG_PACKAGE_STR(init);
 	return INTMODULE_DUMMY_OK;
 }
 
 static int32_t uninit()
 {
+	log_output(LOG_LEVEL_FILE_SCREEN, "%s->%d:into %s", __FUNCTION__, __LINE__, __FUNCTION__);
 	if(0 == dummy_ctx.m_inited)
 		return INTMODULE_DUMMY_ERR_SYS_NOTREADY;
 
-	LOG_PACKAGE_STR(uninit);
 	return INTMODULE_DUMMY_OK;
 }
 
 static int32_t process_command(struct module_pub_data *pmodule_pub_data)
 {
-	LOG_PACKAGE_STR(process_command);
+	log_output(LOG_LEVEL_FILE_SCREEN, "%s->%d:into %s", __FUNCTION__, __LINE__, __FUNCTION__);
 	return INTMODULE_DUMMY_OK;
 }
 
 static int32_t config_set(struct module_pub_data *pmodule_pub_data)
 {
-	LOG_PACKAGE_STR(config_set);
+	log_output(LOG_LEVEL_FILE_SCREEN, "%s->%d:into %s", __FUNCTION__, __LINE__, __FUNCTION__);
 	return INTMODULE_DUMMY_OK;
 }
 
 static int32_t config_get(struct module_pub_data *pmodule_pub_data, char *buf, int32_t buf_size)
 {
-	LOG_PACKAGE_STR(config_get);
+	log_output(LOG_LEVEL_FILE_SCREEN, "%s->%d:into %s", __FUNCTION__, __LINE__, __FUNCTION__);
 	return INTMODULE_DUMMY_OK;
 }
 
 static int32_t process_status(struct module_pub_data *pmodule_pub_data)
 {
-	LOG_PACKAGE_STR(process_status);
+	log_output(LOG_LEVEL_FILE_SCREEN, "%s->%d:into %s", __FUNCTION__, __LINE__, __FUNCTION__);
 	return INTMODULE_DUMMY_OK;
 }
 
 int32_t module_dummy_alloc()
 {
-	LOG_PACKAGE_STR(module_dummy_alloc);
+	log_output(LOG_LEVEL_FILE_SCREEN, "%s->%d:into %s", __FUNCTION__, __LINE__, __FUNCTION__);
 	module_dummy = (module_t *)calloc(1, sizeof(module_t));
 	if (!module_dummy)
 	{
-		LOG_PACKAGE_STR(malloc module_dummy structor was failed);
+		log_output(LOG_LEVEL_FILE_SCREEN, "%s->%d:malloc was failed", __FUNCTION__, __LINE__);
 		return INTMODULE_DUMMY_FALSE;
 	}
 	module_dummy->m_name = "dummy";
@@ -75,7 +75,7 @@ int32_t module_dummy_alloc()
 
 int32_t module_dummy_free()
 {
-	LOG_PACKAGE_STR(module_dummy_free);
+	log_output(LOG_LEVEL_FILE_SCREEN, "%s->%d:into %s", __FUNCTION__, __LINE__, __FUNCTION__);
 	if (module_dummy)
 	{
 		free(module_dummy);

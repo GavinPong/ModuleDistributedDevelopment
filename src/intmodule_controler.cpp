@@ -176,6 +176,7 @@ static int32_t intmodule_ctrl_load_module(cJSON *in_json){
 	}
 	for (i = 0;i < arry_size;i++)
 	{
+		pmodule = NULL;
 		sub_json = cJSON_GetArrayItem(module_enable_arry_json, i);
 		if (!sub_json)
 		{
@@ -189,7 +190,7 @@ static int32_t intmodule_ctrl_load_module(cJSON *in_json){
 			if (pmodule)
 			{
 				pmodule->init();
-				printf("%s->%d:%s module load success\n", __FILE__, __LINE__, module_json->valuestring);
+				log_output(LOG_LEVEL_FILE_SCREEN,"%s->%d:%s module load success",__FUNCTION__, __LINE__, module_json->valuestring);
 				s_module_ctrl_ctx.m_module_arry[pmodule->m_module_id] = pmodule;
 			}
 			else
@@ -203,6 +204,16 @@ static int32_t intmodule_ctrl_load_module(cJSON *in_json){
 		
 	}
 	
+	
+	return INTMODULE_CTR_OK;
+}
+
+static int32_t intmodule_ctrl_unload_module(cJSON *in_json)
+{
+	if (!in_json)
+	{
+		return INTMODULE_CTR_ERR_NULL_PTR;
+	}
 	
 	return INTMODULE_CTR_OK;
 }
@@ -258,7 +269,7 @@ int32_t intmodule_ctrl_startup(){
 		return INTMODULE_CTR_ERR_PARSE_JSON;
 	}
 	intmodule_ctrl_load_module(root_json);
-
+	cJSON_Delete(root_json);
 	return INTMODULE_CTR_OK;
 }
 

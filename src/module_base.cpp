@@ -25,7 +25,8 @@ static char module_table[] = {
 	"{\"module_table\":"
 	"["
 		"{\"dummy\":0},"
-		"{\"rec_muxer\":1}"
+		"{\"rec_muxer\":1},"
+		"{\"hi3531a\":2}"
 	"]}"
 };
 
@@ -156,6 +157,7 @@ int32_t module_base_register_all_module(){
 	/*****start 所有模块注册******/
 	REGISTER_MODULE(dummy);	//注册样例模块
 	REGISTER_MODULE(rec_muxer);	//注册样例模块
+	REGISTER_MODULE(hi3531a);	//注册样例模块
 	/*****end 所有模块注册******/
 	s_module_magager_ctx_t.m_module_cnt = cJSON_GetObjectItem(s_module_magager_ctx_t.m_root_module_table_json, "module_table")?cJSON_GetArraySize(cJSON_GetObjectItem(s_module_magager_ctx_t.m_root_module_table_json, "module_table")):0;
 	cJSON_Delete(s_module_magager_ctx_t.m_root_module_table_json);
@@ -174,6 +176,8 @@ void module_base_unregister_all_module(){
 	}
 	/*****start 所有模块反注册******/
 	UNREGISTER_MODULE(dummy);	//注册样例模块
+	UNREGISTER_MODULE(rec_muxer);	//注册样例模块
+	UNREGISTER_MODULE(hi3531a);	//注册样例模块
 	/*****end 所有模块反注册******/
 	cJSON_Delete(s_module_magager_ctx_t.m_root_module_table_json);
 	s_module_magager_ctx_t.m_root_module_table_json = NULL;

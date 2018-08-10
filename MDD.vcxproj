@@ -21,6 +21,14 @@
     <ClInclude Include="..\util_tools\code\log\log.h" />
     <ClInclude Include="..\util_tools\code\strfunc\strfunc.h" />
     <ClInclude Include="src\global_def.h" />
+    <ClInclude Include="src\hi_3531A\hi3531a_platform.h" />
+    <ClInclude Include="src\hi_3531A\hi_fb\hi_fb.h" />
+    <ClInclude Include="src\hi_3531A\hi_includes.h" />
+    <ClInclude Include="src\hi_3531A\hi_mpp\hi_mpp_sys.h" />
+    <ClInclude Include="src\hi_3531A\hi_mpp\hi_mpp_vi.h" />
+    <ClInclude Include="src\hi_3531A\hi_mpp\hi_mpp_vo.h" />
+    <ClInclude Include="src\hi_3531A\hi_ui\hi_ui_manager.h" />
+    <ClInclude Include="src\hi_3531A\module_hi3531a.h" />
     <ClInclude Include="src\intmodule_controler.h" />
     <ClInclude Include="src\intmodule_external.h" />
     <ClInclude Include="src\module_base.h" />
@@ -36,10 +44,21 @@
     <ClCompile Include="..\util_tools\code\inirw\inirw.c" />
     <ClCompile Include="..\util_tools\code\log\log.cpp" />
     <ClCompile Include="..\util_tools\code\strfunc\strfunc.c" />
+    <ClCompile Include="src\hi_3531A\hi3531a_platform.cpp" />
+    <ClCompile Include="src\hi_3531A\hi_fb\hi_fb.cpp" />
+    <ClCompile Include="src\hi_3531A\hi_mpp\hi_mpp_sys.cpp" />
+    <ClCompile Include="src\hi_3531A\hi_mpp\hi_mpp_vi.cpp" />
+    <ClCompile Include="src\hi_3531A\hi_mpp\hi_mpp_vo.cpp" />
+    <ClCompile Include="src\hi_3531A\hi_ui\hi_ui_manager.cpp" />
+    <ClCompile Include="src\hi_3531A\module_hi3531a.cpp" />
     <ClCompile Include="src\intmodule_controler.cpp" />
     <ClCompile Include="src\module_base.cpp" />
     <ClCompile Include="src\module_dummy\module_dummy.cpp" />
     <ClCompile Include="src\module_rec_muxer\module_rec_muxer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Makefile.libs" />
+    <None Include="Makefile.srcs" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{A706D7D1-2B5E-4F22-AE19-0145EB14B2F9}</ProjectGuid>

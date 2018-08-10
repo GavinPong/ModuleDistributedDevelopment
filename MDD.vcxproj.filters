@@ -93,6 +93,30 @@
     <ClInclude Include="src\module_rec_muxer\module_rec_muxer.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="src\hi_3531A\module_hi3531a.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hi_3531A\hi_fb\hi_fb.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hi_3531A\hi3531a_platform.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hi_3531A\hi_mpp\hi_mpp_sys.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hi_3531A\hi_mpp\hi_mpp_vi.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hi_3531A\hi_mpp\hi_mpp_vo.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hi_3531A\hi_includes.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hi_3531A\hi_ui\hi_ui_manager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\intmodule_controler.cpp">
@@ -128,5 +152,30 @@
     <ClCompile Include="src\module_rec_muxer\module_rec_muxer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\hi_3531A\module_hi3531a.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hi_3531A\hi_fb\hi_fb.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hi_3531A\hi3531a_platform.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hi_3531A\hi_mpp\hi_mpp_sys.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hi_3531A\hi_mpp\hi_mpp_vi.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hi_3531A\hi_mpp\hi_mpp_vo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hi_3531A\hi_ui\hi_ui_manager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Makefile.srcs" />
+    <None Include="Makefile.libs" />
   </ItemGroup>
 </Project>

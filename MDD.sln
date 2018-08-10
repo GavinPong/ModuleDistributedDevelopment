@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hi31a", "F:\ZP\HiSi\Hi3531A V100R001C01SPC030\01.software\board\Hi3531A_SDK_V1.0.3.0\package\mpp\hi31a.vcxproj", "{2EBF6A23-DF80-B38E-C16E-2CDB042A177C}"
+EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MDD", "MDD.vcxproj", "{A706D7D1-2B5E-4F22-AE19-0145EB14B2F9}"
 EndProject
 Global
@@ -9,6 +11,10 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2EBF6A23-DF80-B38E-C16E-2CDB042A177C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2EBF6A23-DF80-B38E-C16E-2CDB042A177C}.Debug|Win32.Build.0 = Debug|Win32
+		{2EBF6A23-DF80-B38E-C16E-2CDB042A177C}.Release|Win32.ActiveCfg = Release|Win32
+		{2EBF6A23-DF80-B38E-C16E-2CDB042A177C}.Release|Win32.Build.0 = Release|Win32
 		{A706D7D1-2B5E-4F22-AE19-0145EB14B2F9}.Debug|Win32.ActiveCfg = Debug|Win32
 		{A706D7D1-2B5E-4F22-AE19-0145EB14B2F9}.Debug|Win32.Build.0 = Debug|Win32
 		{A706D7D1-2B5E-4F22-AE19-0145EB14B2F9}.Release|Win32.ActiveCfg = Release|Win32

@@ -6,16 +6,31 @@ SRCS_INC :=
 SRCS_INC += -I./src
 SRCS_INC += -I./src/module_dummy
 SRCS_INC += -I./src/module_rec_muxer
+SRCS_INC += -I./src/hi_3531A
+SRCS_INC += -I./src/hi_3531A/hi_fb
+SRCS_INC += -I./src/hi_3531A/hi_mpp
+SRCS_INC += -I./src/hi_3531A/hi_tde
+SRCS_INC += -I./src/hi_3531A/hi_ui
 
 SRCS_C :=
 SRCS_C += $(wildcard ./src/*.c)
 SRCS_C += $(wildcard ./src/module_dummy/*.c)
 SRCS_C += $(wildcard ./src/module_rec_muxer/*.c)
+SRCS_C += $(wildcard ./src/hi_3531A/*.c)
+SRCS_C += $(wildcard ./src/hi_3531A/hi_fb/*.c)
+SRCS_C += $(wildcard ./src/hi_3531A/hi_mpp/*.c)
+SRCS_C += $(wildcard ./src/hi_3531A/hi_tde/*.c)
+SRCS_C += $(wildcard ./src/hi_3531A/hi_ui/*.c)
 
 SRCS_CPP :=
 SRCS_CPP += $(wildcard ./src/*.cpp)
 SRCS_CPP += $(wildcard ./src/module_dummy/*.cpp)
 SRCS_CPP += $(wildcard ./src/module_rec_muxer/*.cpp)
+SRCS_CPP += $(wildcard ./src/hi_3531A/*.cpp)
+SRCS_CPP += $(wildcard ./src/hi_3531A/hi_fb/*.cpp)
+SRCS_CPP += $(wildcard ./src/hi_3531A/hi_mpp/*.cpp)
+SRCS_CPP += $(wildcard ./src/hi_3531A/hi_tde/*.cpp)
+SRCS_CPP += $(wildcard ./src/hi_3531A/hi_ui/*.cpp)
 
 ############public source code############
 UTIL_TOOLS_DIR := /home/disk2/zp/work_space/code/util_tools/code
