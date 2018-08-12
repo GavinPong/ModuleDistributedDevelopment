@@ -197,7 +197,7 @@ static int32_t intmodule_ctrl_load_module(cJSON *in_json){
 			{
 				if (module_json)
 				{
-					printf("%s->%d:%s module load failed\n", __FILE__, __LINE__, module_json->valuestring);
+					log_output(LOG_LEVEL_FILE_SCREEN,"%s->%d:%s module load failed",__FUNCTION__, __LINE__, module_json->valuestring);
 				}	
 			}
 		}
